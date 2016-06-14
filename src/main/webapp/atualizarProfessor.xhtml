@@ -1,0 +1,186 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+
+	<ui:define name="content">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#{request.contextPath}/Inicio.xhtml"><span
+						class="glyphicon glyphicon-home"></span></a></li>
+				<li class="active">Atualizar dados</li>
+			</ol>
+		</div>
+		<!--/.row-->
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 class="page-header">Atualizar dados de
+					#{pessoaBean.pessoa.nome}</h2>
+			</div>
+		</div>
+		<!--/.row-->
+		<h:panelGroup rendered="#{professorBean.editado}">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">Preencha o formulário.</div>
+						<div class="panel-body">
+							<h:form id="salvar_form">
+								<h:messages id="messages" showDetail="true" closable="true"
+									autoUpdate="true" />
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Nome:</label>
+										<p:inputText value="#{professorBean.professor.pessoa.nome}"
+											styleClass="form-control" id="Nome" />
+									</div>
+									<div class="form-group">
+										<label>Sexo:</label>
+										<p:inputText value="#{professorBean.professor.pessoa.sexo}"
+											styleClass="form-control" id="Sexo" />
+									</div>
+									<div class="form-group">
+										<label>Data de nascimento :</label>
+										<p:calendar value="#{professorBean.professor.pessoa.dataNasc}"
+											pattern="dd/MM/yyyy" styleClass="form-date"
+											id="Data_Nascimento" />
+									</div>
+									<div class="form-group">
+										<label>Email:</label>
+										<p:inputText value="#{professorBean.professor.pessoa.email}"
+											styleClass="form-control" id="Email" />
+									</div>
+									<div class="form-group">
+										<label>Estado Civil:</label>
+										<h:selectOneMenu value="#{professorBean.professor.pessoa.estadoCivil}"
+											styleClass="form-control" id="Estado_Civil">
+											<f:selectItem itemValue="" itemLabel="-"
+												noSelectionOption="true" />
+											<f:selectItem itemValue="SOLTEIRO(A)" itemLabel="Solteiro(a)" />
+											<f:selectItem itemValue="CASADO(A)" itemLabel="Casado(a)" />
+											<f:selectItem itemValue="DIVORCIADO(A)"
+												itemLabel="Divorciado(a)" />
+											<f:selectItem itemValue="OUTRO" itemLabel="Outro" />
+										</h:selectOneMenu>
+									</div>
+									<div class="form-group">
+										<label>Etnia:</label>
+										<p:inputText value="#{professorBean.pessoa.etnia}"
+											styleClass="form-control" id="Etnia" />
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Nacionalidade:</label>
+										<p:inputText value="#{professorBean.professor.pessoa.nacionalidade}"
+											styleClass="form-control" id="Nacionalidade" />
+									</div>
+									<div class="form-group">
+										<label>Naturalidade:</label>
+										<p:inputText value="#{professorBean.professor.pessoa.naturalidade}"
+											styleClass="form-control" id="Naturalidade" />
+									</div>
+
+									<div class="form-group">
+										<label>UF:</label>
+										<p:inputText value="#{professorBean.professor.pessoa.uf}"
+											styleClass="form-control" id="UF" style="width: 70px" />
+									</div>
+									<div class="form-group">
+										<label>Necessidades Especiais:</label>
+										<p:inputText
+											value="#{professorBean.professor.pessoa.necessidadesEspeciais}"
+											styleClass="form-control" id="Necessidades_Especiais" />
+									</div>
+									<div class="form-group">
+										<label>Nome da Mãe:</label>
+										<p:inputText value="#{professorBean.professor.pessoa.nomeMae}"
+											styleClass="form-control" id="Nome_Mae" />
+									</div>
+									<div class="form-group">
+										<label>Nome do Pai:</label>
+										<p:inputText value="#{professorBean.professor.pessoa.nomePai}"
+											styleClass="form-control" id="Nome_Pai" />
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<h:commandButton styleClass="btn btn-default" value="Visualizar Documentos"
+											action="#{documentoBean.atualizarDocumentos(professorBean.professor.pessoa)}"
+											process="@form" id="btn-atualizar-documento" type="submit" />
+
+									</div>
+									<div class="form-group">
+										<h:commandButton styleClass="btn btn-default" value="Visualizar Endereços"
+											action="#{enderecoBean.atualizarEnderecos(professorBean.professor.pessoa)}"
+											process="@form" id="btn-atualizar-endereco" type="submit"/>
+									</div>
+									<div class="form-group">
+										<label>Numero do Celular:</label>
+										<p:inputText
+											value="#{professorBean.professor.pessoa.responsavelLegal}"
+											styleClass="form-control" id="Numero_Celular" />
+									</div>
+									<div class="form-group">
+										<label>Responsavel Legal:</label>
+										<p:inputText value="#{professorBean.professor.pessoa.numeroCelular}"
+											styleClass="form-control" id="Responsavel_Legal" />
+									</div>
+									<div class="form-group">
+												<label>Nível de formação:</label>
+												<h:selectOneMenu
+													value="#{professorBean.professor.nivelFormacao}"
+													styleClass="form-control" id="nivel-formacao">
+													<f:selectItem itemValue="" itemLabel="-"
+														noSelectionOption="true" />
+													<f:selectItem itemValue="ENSINO FUNDAMENTAL COMPLETO"
+														itemLabel="Fundamental Completo" />
+													<f:selectItem itemValue="ENSINO FUNDAMENTAL INCOMPLETO"
+														itemLabel="Fundamental Incompleto" />
+													<f:selectItem itemValue="ENSINO MEDIO COMPLETO"
+														itemLabel="Ensino Médio Completo" />
+													<f:selectItem itemValue="ENSINO MEDIO INCOMPLETO"
+														itemLabel="Ensino Médio Incompleto" />
+													<f:selectItem itemValue="ENSINO TECNICO COMPLETO"
+														itemLabel="Ensino Técnico Completo" />
+													<f:selectItem itemValue="ENSINO TECNICO INCOMPLETO"
+														itemLabel="Ensino Técnico Incompleto" />
+													<f:selectItem itemValue="ENSINO SUPERIOR COMPLETO"
+														itemLabel="Ensino Superior Completo" />
+													<f:selectItem itemValue="ENSINO SUPERIOR INCOMPLETO"
+														itemLabel="Ensino Superior Incompleto" />
+												</h:selectOneMenu>
+											</div>
+											<div class="form-group">
+												<label>Formação:</label>
+												<p:inputText required="true" styleClass="form-control"
+													id="formacao" value="#{professorBean.professor.formacao}"
+													locale="pt_BR" />
+											</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<h:commandButton value="save"
+											action="#{professorBean.salvarAtualizar}" type="submit"
+											styleClass="btn btn-primary" process="@form"/>
+										<span> </span>
+										<h:commandButton value="cancel"
+											action="#{professorBean.cancelarAtualizar}"
+											styleClass="btn btn-primary" process="@form"/>
+									</div>
+								</div>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{!professorBean.editado}">
+			<h3>Não existem dados para atualziar</h3>
+		</h:panelGroup>
+	</ui:define>
+
+</ui:composition>
